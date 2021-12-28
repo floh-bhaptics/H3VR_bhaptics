@@ -9,6 +9,8 @@ namespace H3VR_bhaptics
     {
         public static string recoilPrefixFromRoundType(FistVR.FireArmRoundType roundType, bool hasStock, bool twoHanded)
         {
+            // Determining gun types by their rounds. This makes it possible to account for guns added via
+            // mods, since the ammo types are compiled into the code.
             string prefix = "Default";
             string[] pistolRounds = { "a9_19_Parabellum", "a50ActionExpress", "a763x25mmMauser", "a8mmBergmann", "a765x25mmBorchardt", "a45_ACP",
                 "a32ACP", "a45_ACP", "a50_Imaginary", "a357_Magnum", "a44_Magnum", "a22_LR", "a57x28mm", "a40_SW", "a25_ACP", "a9mmSteyr", "a9_18_Makarov",

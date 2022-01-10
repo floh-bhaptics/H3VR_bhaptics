@@ -13,7 +13,7 @@ using MyBhapticsTactsuit;
 
 namespace H3VR_bhaptics
 {
-    [BepInPlugin("org.bepinex.plugins.H3VR_bhaptics", "H3VR bhaptics integration", "1.3")]
+    [BepInPlugin("org.bepinex.plugins.H3VR_bhaptics", "H3VR bhaptics integration", "1.4")]
     public class Plugin : BaseUnityPlugin
     {
 #pragma warning disable CS0109 // Remove unnecessary warning
@@ -309,7 +309,19 @@ namespace H3VR_bhaptics
             [HarmonyPostfix]
             public static void Postfix()
             {
-                tactsuitVr.LOG("Player killed.");
+                // Reset in case there is a new maximum health setting in the next round
+                maxHealth = 0;
+                // Stop heart beat if player is killed.
+                tactsuitVr.StopThreads();
+            }
+        }
+
+        [HarmonyPatch(typeof(FistVR.MainMenuScreen), "Start", new Type[] {  })]
+        public class bhaptics_LoadMenuScreen
+        {
+            [HarmonyPostfix]
+            public static void Postfix()
+            {
                 // Reset in case there is a new maximum health setting in the next round
                 maxHealth = 0;
                 // Stop heart beat if player is killed.

@@ -1,0 +1,9 @@
+{
+  "name": "H3VR_bhaptics",
+  "version_number": "1.2.1",
+  "website_url": "",
+  "description": "Adds feedback via the bhaptics gear to H3VR for shooting and getting hurt.",
+  "dependencies": [
+    "BepInEx-BepInExPack_H3VR-5.4.1101"
+  ]
+}
